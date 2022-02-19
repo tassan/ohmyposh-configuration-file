@@ -1,0 +1,129 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "session",
+          "style": "diamond",
+          "foreground": "#ffffff",
+          "background": "#4169e1",
+          "leading_diamond": "\uE0B6",
+          "trailing_diamond": "\uE0B0",
+          "properties": {
+            "template": "{{ if .SSHSession }}\uF817 {{ end }}{{ .UserName }}@{{ .HostName }}"
+          }
+        },
+        {
+          "type":"sysinfo",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#ffffff",
+          "background": "#5263fa",
+          "properties": {
+            "precision": 2,
+            "template":" \uf85a {{ round .PhysicalPercentUsed .Precision }}% "
+          },
+          "style":"powerline"
+        },
+        {
+            "type": "battery",
+            "style": "powerline",
+            "powerline_symbol": "\uE0B0",
+            "foreground": "#193549",
+            "background": "#ffeb3b",
+            "background_templates": [
+              "{{if eq \"Charging\" .State.String}}#40c4ff{{end}}",
+              "{{if eq \"Discharging\" .State.String}}#ff5722{{end}}",
+              "{{if eq \"Full\" .State.String}}#4caf50{{end}}"
+            ],
+            "properties": {
+              "discharging_icon": "\uE231 ",
+              "charging_icon": "\uE234 ",
+              "charged_icon": "\uE22F ",
+              "template": " {{ if not .Error }}{{ .Icon }}{{ .Percentage }}{{ end }}\uF295 "
+            }
+        },
+        {
+          "background": "#504e4e",
+          "foreground": "#fbff00",
+          "powerline_symbol": "\ue0b0",
+          "properties": {
+            "style": "folder",
+            "template": " {{ .Path }} "
+          },
+          "style": "powerline",
+          "type": "path"
+        },
+        {
+            "type": "dotnet",
+            "style": "powerline",
+            "powerline_symbol": "\uE0B0",
+            "foreground": "#FFFFFF",
+            "background": "#a82eda",
+            "properties": {
+              "template": " \uE77F {{ .Full }} "
+            }
+        },
+        {
+            "type": "az",
+            "style": "powerline",
+            "powerline_symbol": "\uE0B0",
+            "foreground": "#000000",
+            "background": "#9ec3f0",
+            "properties": {
+              "template": " \uFD03 {{ .EnvironmentName }}"
+            }
+        },
+        {
+            "type": "azfunc",
+            "style": "powerline",
+            "powerline_symbol": "\uE0B0",
+            "foreground": "#ffffff",
+            "background": "#FEAC19",
+            "properties": {
+                "template": " \uf0e7 {{ .Full }} ",
+                "fetch_version": true,
+                "display_mode": "files"
+            }
+        },
+        {
+            "type": "python",
+            "style": "powerline",
+            "powerline_symbol": "\uE0B0",
+            "foreground": "#100e23",
+            "background": "#906cff",
+            "properties": {
+              "template": " \uE235 {{ .Full }} "
+            }
+        },
+        {
+            "type": "go",
+            "style": "powerline",
+            "powerline_symbol": "\uE0B0",
+            "foreground": "#ffffff",
+            "background": "#000000",
+            "properties": {
+              "template": " \uFCD1 {{ .Full }} "
+            }
+        },
+        {
+          "background": "#fffb38",
+          "foreground": "#193549",
+          "powerline_symbol": "\ue0b0",
+          "properties": {
+            "fetch_stash_count": true,
+            "fetch_status": true,
+            "fetch_upstream_icon": true,
+            "template": " {{ .HEAD }} {{ .BranchStatus }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0}} \uf692 {{ .StashCount }}{{ end }}{{ if gt .WorktreeCount 0}} \uf1bb {{ .WorktreeCount }}{{ end }} "
+          },
+          "style": "powerline",
+          "type": "git"
+        }
+      ],
+      "type": "prompt"
+    }
+  ],
+  "final_space": true,
+  "version": 1
+}
